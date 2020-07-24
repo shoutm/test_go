@@ -1,0 +1,34 @@
+name: Go
+
+on:
+  push:
+    tags: v*
+
+jobs:
+  release:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Create a Release
+      uses: actions/create-release@v1
+      with:
+         release_name: Version ${{ github.ref }}
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.14
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Build
+      run: go build -v .
+
