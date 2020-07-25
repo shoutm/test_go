@@ -4,6 +4,10 @@ before:
     - go mod tidy
 builds:
   - main: .
+    goos:
+      - linux
+      - darwin
+      - windows
     binary: ecurl
     ldflags:
       - -s -w
