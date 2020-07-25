@@ -1,4 +1,4 @@
-name: Go
+name: Create release
 
 on:
   push:
@@ -13,6 +13,8 @@ jobs:
 
     - name: Create a Release
       uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
          release_name: Version ${{ github.ref }}
 
