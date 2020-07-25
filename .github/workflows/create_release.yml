@@ -16,7 +16,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-         release_name: Version ${{ github.ref }}
+        tag_name: ${{ github.ref }}
+        release_name: Version ${{ github.ref }}
 
   build:
     name: Build
